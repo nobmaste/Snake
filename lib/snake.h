@@ -12,6 +12,7 @@ class snake {
 public:
     snake();
     void init() ;
+    void snake::set_direction(Direction new_direction);
     void move();
     bool check_collision() ;
     bool check_wall_collision(int game_width, int game_height) ;
@@ -19,5 +20,6 @@ public:
 
 private:
     std::vector<std::vector<int>> body;
+    Direction direction;
 };
 #endif
