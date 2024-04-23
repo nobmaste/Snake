@@ -26,15 +26,15 @@ Direction Joystick::get_direction()
     if (angle < 0.0f) {
         d = CENTRE;   // check for -1.0 angle
     } else if (angle < 45f) {  // then keep going in 45 degree increments
-        d = N;
+        d = UP;
     }  else if (angle < 135f) {
-        d = E;
+        d = RIGHT;
     }  else if (angle < 225f) {
-        d = S;
+        d = DOWN;
     }  else if (angle < 315f) {
-        d = W;
+        d = LEFT;
     } else {
-        d = N;
+        d = UP;
     }
 
     return d;

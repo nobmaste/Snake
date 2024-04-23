@@ -4,10 +4,18 @@ snake::snake(){}
 
 void snake::init() {
     printf("Snake: Init\n");
-        body.clear();
-        body.push_back(std::make_pair(0, 0)); // initial position
-        direction = RIGHT; // initial direction
+    body.clear();
+    body.push_back(std::make_pair(0, 5)); // tail
+    body.push_back(std::make_pair(1, 5)); // middle part
+    body.push_back(std::make_pair(2, 5)); // head
+    direction = RIGHT; // initial direction
+}
+
+void snake::set_direction(Direction new_direction) {
+    if (new_direction != CENTER) {
+        direction = new_direction;
     }
+}
 
 void snake::move() {
     //获取蛇头位置

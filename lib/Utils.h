@@ -16,10 +16,10 @@ struct Food_modle//食物模型
 
 enum Direction {
     CENTRE,  // 0
-    N,       // 1      
-    E,       // 2
-    S,       // 3
-    W        // 4
+    UP,       // 1      
+    RIGHT,       // 2
+    DOWN,       // 3
+    LEFT        // 4
      
 };
 
