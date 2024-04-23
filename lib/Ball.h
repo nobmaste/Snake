@@ -35,18 +35,5 @@ private:
     int _y;
 };
 
-class Food
-{
-public:
-    Food();
-    void init(int size);
-    void draw(N5110 &lcd);
-    void update();
-    /// accessors and mutators
-    void place();
-private:
-    int _size;
-    int _x;
-    int _y;
-};
+
 #endif

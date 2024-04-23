@@ -12,7 +12,7 @@ void snake::init() {
 }
 
 void snake::set_direction(Direction new_direction) {
-    if (new_direction != CENTER) {
+    if (new_direction != CENTRE) {
         direction = new_direction;
     }
 }

@@ -1,5 +1,5 @@
-#ifndef BALL_H
-#define BALL_H
+#ifndef SNAKE_H
+#define SNAKE_H
 #include<iostream>
 #include "mbed.h"
 #include "N5110.h"
