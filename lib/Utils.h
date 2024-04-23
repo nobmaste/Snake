@@ -6,16 +6,21 @@ struct Position2D {
   int y;  
 };
 
+struct Food_modle//食物模型
+{
+    int x;
+    int y;
+    int size;
+};
+
+
 enum Direction {
     CENTRE,  // 0
-    N,       // 1
-    NE,      // 2
-    E,       // 3
-    SE,      // 4
-    S,       // 5
-    SW,      // 6
-    W,       // 7
-    NW      // 8
+    N,       // 1      
+    E,       // 2
+    S,       // 3
+    W        // 4
+     
 };
 
 struct UserInput {
