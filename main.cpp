@@ -16,12 +16,13 @@
 *    Board:	                NUCLEO L476RG   */
 
 ///////////// includes /////////////////////
-
+#include "mbed.h"
 #include "Joystick.h"
 #include "N5110.h"  
-#include "PongEngine.h"
+#include "snake.h"
+#include "food.h"
 #include "Utils.h"
-#include "mbed.h"
+#include "GameEngine.h"
 ///////////// defines /////////////////////
 #define PADDLE_WIDTH 2
 #define PADDLE_HEIGHT 8
@@ -32,7 +33,8 @@
 N5110 lcd(PC_7, PA_9, PB_10, PB_5, PB_3, PA_10);
 Joystick joystick(PC_1, PC_0);
 DigitalIn buttonA(BUTTON1); //onboard user button
-PongEngine pong;
+snake _snake;
+food _food;
 
 ///////////// prototypes ///////////////
 void init();
@@ -49,12 +51,14 @@ int main() {
     int fps = 10;
     thread_sleep_for(1000/fps);  // and wait for one frame period - millseconds
     
-    int lives = 4;   // display lives on LEDs
+    bool lives = true;   // display lives on LEDs
     
-    while (lives > 0) {  // keep looping while lives remain
-        // read the joystick input and store in a struct
-        UserInput input = {joystick.get_direction(),joystick.get_mag()};
-        lives = pong.update(input);   // update the game engine based on input    
+    while (lives == true) {  // keep looping while lives remain
+       _snake.move(_food,joystick);  
+        if(_snake.check_collision() || _snake.check_wall_collision(WIDTH, HEIGHT)) {
+                printf("Game Over\n");
+                lives=false;
+        }
         render();                     // draw frame on screen
         thread_sleep_for(1000/fps);         // and wait for one frame period - ms
     }   
@@ -65,12 +69,18 @@ void init() {
     lcd.init(LPH7366_1);
     lcd.setContrast(0.5);
     joystick.init();
-    pong.init(0,8,2,2,2);     // paddle x position, paddle_height,paddle_width,ball_size,speed
+    _snake.init();
+    _food.generate();
 }
 
 void render() {  // clear screen, re-draw and refresh
     lcd.clear();  
-    pong.draw(lcd);
+    lcd.drawLine(0,0,WIDTH-1,0,1);  // top
+    lcd.drawLine(WIDTH-1,0,WIDTH-1,HEIGHT-1,1);  // right
+    lcd.drawLine(0,HEIGHT-1,WIDTH-1,HEIGHT-1,1); // bottom
+    lcd.drawLine(0,0,WIDTH-1,HEIGHT-1,1);  // top
+    _snake.draw(lcd);
+    _food.draw(lcd);
     lcd.refresh();
 }
 
