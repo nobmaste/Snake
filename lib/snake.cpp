@@ -17,7 +17,11 @@ void snake::set_direction(Direction new_direction) {
     }
 }
 
-void snake::move() {
+/*
+根据方向移动蛇
+检查是否吃下食物，吃下则生成一个新的食物并且蛇长+1
+*/
+void snake::move(food &f) {
     //获取蛇头位置
     std::pair<int, int> head = body.back();
 
@@ -40,9 +44,20 @@ void snake::move() {
     // 添加新蛇头
     body.push_back(head);
 
+    // 获取食物位置
+    Position2D food_position = f.get_position();
+    // 检查蛇头是否与食物的位置重合
+    if (head.first == food_position.x && head.second == food_position.y) {
+        isEaten = true;
+        f.generate();
+    }
+
     // 如果没有吃到食物，删除尾部
-    if (!ate_food) {
+    if (!f.isEaten) {
         body.erase(body.begin());
+    }else {
+        // 如果吃到食物，重置isEaten为false
+        f.isEaten = false;
     }
 }
 
@@ -77,3 +92,4 @@ void snake::draw(N5110 &lcd) {
         lcd.drawRect(part.first, part.second, 2, 2, FILL_BLACK);
     }
 }
+

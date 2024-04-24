@@ -4,10 +4,11 @@
 #include "mbed.h"
 #include "N5110.h"
 #include "Utils.h"  // for Position
+#include "snake.h"
 
 #include <vector>
 #include <utility> // for std::pair
-
+#include <cstdlib>
 
 class food {
 public:
@@ -16,9 +17,14 @@ public:
 
     Position2D get_position();
     void generate() ;//生成食物
-    void destroy();//消灭食物
 
+    
 private:
-   
+    int getRand(int min, int max) {
+        return ( rand() % (max - min + 1) ) + min ;
+    }
+    Position2D food_position//食物坐标
+    bool isEaten = false;//食物是否被吃标志,flase表示未被吃
+
 };
 #endif
