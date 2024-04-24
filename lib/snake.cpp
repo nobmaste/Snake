@@ -21,10 +21,11 @@ void snake::set_direction(Direction new_direction) {
 根据方向移动蛇
 检查是否吃下食物，吃下则生成一个新的食物并且蛇长+1
 */
-void snake::move(food &f) {
+void snake::move(food &f,Joystick &joystick) {
     //获取蛇头位置
     std::pair<int, int> head = body.back();
-
+    //获取摇杆方向
+    Directory direction=joystick.get_direction();
     //根据移动方向计算新位置
     switch (direction) {
         case UP:
