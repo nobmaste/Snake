@@ -5,9 +5,9 @@ snake::snake(){}
 void snake::init() {
     printf("Snake: Init\n");
     body.clear();
-    body.push_back(std::make_pair(0, 5)); // tail
-    body.push_back(std::make_pair(1, 5)); // middle part
-    body.push_back(std::make_pair(2, 5)); // head
+    body.push_back(std::make_pair<int, int>(0, 5)); // tail
+    body.push_back(std::make_pair<int, int>(1, 5)); // middle part
+    body.push_back(std::make_pair<int, int>(2, 5)); // head
     direction = RIGHT; // initial direction
 }
 
@@ -25,7 +25,7 @@ void snake::move(food &f,Joystick &joystick) {
     //获取蛇头位置
     std::pair<int, int> head = body.back();
     //获取摇杆方向
-    Directory direction=joystick.get_direction();
+    Direction direction=joystick.get_direction();
     //根据移动方向计算新位置
     switch (direction) {
         case UP:
