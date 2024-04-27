@@ -22,7 +22,6 @@
 #include "snake.h"
 #include "food.h"
 #include "Utils.h"
-#include "GameEngine.h"
 ///////////// defines /////////////////////
 #define PADDLE_WIDTH 2
 #define PADDLE_HEIGHT 8

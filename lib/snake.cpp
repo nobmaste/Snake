@@ -5,9 +5,9 @@ snake::snake(){}
 void snake::init() {
     printf("Snake: Init\n");
     body.clear();
-    body.push_back(std::make_pair<int, int>(0, 5)); // tail
-    body.push_back(std::make_pair<int, int>(1, 5)); // middle part
-    body.push_back(std::make_pair<int, int>(2, 5)); // head
+    body.push_back({0, 5}); // tail
+    body.push_back({1, 5}); // middle part
+    body.push_back({2, 5}); // head
     direction = RIGHT; // initial direction
 }
 
@@ -23,7 +23,7 @@ void snake::set_direction(Direction new_direction) {
 */
 void snake::move(food &f,Joystick &joystick) {
     //获取蛇头位置
-    std::pair<int, int> head = body.back();
+    std::pair<int, int> head = get_head();
     //获取摇杆方向
     Direction direction=joystick.get_direction();
     //根据移动方向计算新位置
@@ -43,13 +43,14 @@ void snake::move(food &f,Joystick &joystick) {
     }
 
     // 添加新蛇头
-    body.push_back(head);
+    std::vector<int> head_vec = {head.first, head.second};
+    body.push_back(head_vec);
 
     // 获取食物位置
     Position2D food_position = f.get_position();
     // 检查蛇头是否与食物的位置重合
     if (head.first == food_position.x && head.second == food_position.y) {
-        isEaten = true;
+        f.isEaten = true;
         f.generate();
     }
 
@@ -64,7 +65,8 @@ void snake::move(food &f,Joystick &joystick) {
 
 //检测自身碰撞
 bool snake::check_collision() {
-    std::pair<int, int> head = body.back(); // Get the current head position
+    std::pair<int, int> head_pair = get_head(); // Get the current head position
+    std::vector<int> head = {head_pair.first, head_pair.second};
 
     // Check if the head has collided with the body
     for (int i = 0; i < body.size() - 1; i++) {
@@ -77,7 +79,7 @@ bool snake::check_collision() {
 }
 //检测墙壁碰撞
 bool snake::check_wall_collision(int game_width, int game_height) {
-    std::pair<int, int> head = body.back(); // Get the current head position
+    std::pair<int, int> head = get_head(); // Get the current head position
 
     // Check if the head has collided with the wall
     if (head.first < 0 || head.first >= game_width || head.second < 0 || head.second >= game_height) {
@@ -90,7 +92,12 @@ bool snake::check_wall_collision(int game_width, int game_height) {
 //画出蛇
 void snake::draw(N5110 &lcd) {
     for (auto &part : body) {
-        lcd.drawRect(part.first, part.second, 2, 2, FILL_BLACK);
+        if (part.size() >= 2) {
+            lcd.drawRect(part[0], part[1], 2, 2, FILL_BLACK);
+        } else {
+            // Handle error here, for example, print an error message
+            printf("Snake body part has less than 2 elements\n");
+        }
     }
 }
 

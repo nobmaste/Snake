@@ -4,7 +4,7 @@
 #include "mbed.h"
 #include "N5110.h"
 #include "Utils.h"  // for Position
-#include "snake.h"
+
 
 #include <vector>
 #include <utility> // for std::pair
@@ -23,7 +23,7 @@ private:
     int getRand(int min, int max) {
         return ( rand() % (max - min + 1) ) + min ;
     }
-    Position2D food_position//食物坐标
+    Position2D food_position;//食物坐标
     
 
 };

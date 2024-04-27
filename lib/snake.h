@@ -13,17 +13,24 @@ class snake {
 public:
     snake();
     void init() ;
-    void snake::set_direction(Direction new_direction);
+    void set_direction(Direction new_direction);
     void move(food &f,Joystick &joystick);
     bool check_collision() ;
     bool check_wall_collision(int game_width, int game_height) ;
     void draw(N5110 &lcd);
     std::pair<int, int> get_head() const {
-        return body.back();
-    }//获取蛇头位置
+        std::vector<int> head = body.back();
+        if (head.size() >= 2) {
+         return std::make_pair(head[0], head[1]);
+        } else {
+         printf("get head error\n");
+          return std::make_pair(-1, -1);  // 返回一个默认值
+        }
+    }
 
 private:
     std::vector<std::vector<int>> body;//snake身体
     Direction direction;
+    
 };
 #endif
