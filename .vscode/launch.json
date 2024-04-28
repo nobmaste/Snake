@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/Floder/grade_3/Boss_Qi/reference/Qi",
-      "program": "d:/Floder/grade_3/Boss_Qi/reference/Qi/build/Debug/outDebug",
+      "cwd": "d:/Floder/grade_3/Boss_Qi/reference/Snake",
+      "program": "d:/Floder/grade_3/Boss_Qi/reference/Snake/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

@@ -55,9 +55,10 @@ int main() {
     while (lives == true) {  // keep looping while lives remain
        _snake.move(_food,joystick);  
         if(_snake.check_collision() || _snake.check_wall_collision(WIDTH, HEIGHT)) {
-                printf("Game Over\n");
+                printf("collision\n");
                 lives=false;
         }
+        printf("lives\n");
         render();                     // draw frame on screen
         thread_sleep_for(1000/fps);         // and wait for one frame period - ms
     }   
@@ -70,6 +71,10 @@ void init() {
     joystick.init();
     _snake.init();
     _food.generate();
+    printf("lcd init\n");
+    printf("joystick init\n");
+    printf("snake init\n");
+    printf("food init\n");
 }
 
 void render() {  // clear screen, re-draw and refresh
@@ -94,6 +99,7 @@ void welcome() { // splash screen
          ThisThread::sleep_for(100ms);
       
         }
+    printf("Game Start\n");
 }
 
 void game_over() { // splash screen 
