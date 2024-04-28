@@ -86,3 +86,7 @@ Use of undeclared identifier 'ThisThread'clang(undeclared_var_use)[98, 10]
 No matching literal operator for call to 'operator""ms' with argument of type 'unsigned long long' or 'const char *', and no matching literal operator templateclang(ovl_no_viable_literal_operator)[98, 35]
 Use of undeclared identifier 'ThisThread'clang(undeclared_var_use)[108, 9]
 No matching literal operator for call to 'operator""ms' with argument of type 'unsigned long long' or 'const char *', and no matching literal operator templateclang(ovl_no_viable_literal_operator)[108, 34]<br>
+
+报错修改记录：<br>
+修复vector容器引用数据类型不匹配的bug<br>
+添加mbed平台编译文件需要的os文件
