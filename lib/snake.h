@@ -23,7 +23,7 @@ public:
     std::pair<int, int> get_head() const {
         std::vector<int> head = body.back();
         if (head.size() >= 2) {
-         printf("head position:%d, %d\n", head[0], head[1]);
+         printf("get_head:%d, %d\n", head[0], head[1]);
          return std::make_pair(head[0], head[1]);
         } else {
          printf("get head error\n");
@@ -34,6 +34,6 @@ public:
 private:
     std::vector<std::vector<int>> body;//snake身体
     Direction direction;
-    
+    Direction last_direction = RIGHT; // 默认初始方向为右
 };
 #endif

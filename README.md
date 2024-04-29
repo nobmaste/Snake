@@ -90,3 +90,25 @@ No matching literal operator for call to 'operator""ms' with argument of type 'u
 报错修改记录：<br>
 修复vector容器引用数据类型不匹配的bug<br>
 添加mbed平台编译文件需要的os文件
+
+4/29 log：<br>
+Snake: Init
+get_head:24, 20
+Snake init
+ Head: Initialised at 24, 20
+Game Start
+lives
+get_head:24, 20
+Snake: Moved to 26, 20
+Snake: Removed tail
+get_head:26, 20
+
+check body positin:24, 20
+check body positin:26, 20
+collisin interupt, body position:26, 20
+Snake: Collision with body
+collision
+
+Game Over
+
+Game Over

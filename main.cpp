@@ -53,12 +53,12 @@ int main() {
     bool lives = true;   // display lives on LEDs
     
     while (lives == true) {  // keep looping while lives remain
+        printf("lives\n");
        _snake.move(_food,joystick);  
         if(_snake.check_collision() || _snake.check_wall_collision(WIDTH, HEIGHT)) {
                 printf("collision\n");
                 lives=false;
         }
-        printf("lives\n");
         render();                     // draw frame on screen
         thread_sleep_for(1000/fps);         // and wait for one frame period - ms
     }   
@@ -71,18 +71,14 @@ void init() {
     joystick.init();
     _snake.init();
     _food.generate();
-    printf("lcd init\n");
-    printf("joystick init\n");
-    printf("snake init\n");
-    printf("food init\n");
 }
 
 void render() {  // clear screen, re-draw and refresh
     lcd.clear();  
-    lcd.drawLine(0,0,WIDTH-1,0,1);  // top
+    lcd.drawLine(0,0,WIDTH-1,0,1);  // bottom
     lcd.drawLine(WIDTH-1,0,WIDTH-1,HEIGHT-1,1);  // right
-    lcd.drawLine(0,HEIGHT-1,WIDTH-1,HEIGHT-1,1); // bottom
-    lcd.drawLine(0,0,WIDTH-1,HEIGHT-1,1);  // top
+    lcd.drawLine(0,HEIGHT-1,WIDTH-1,HEIGHT-1,1); // top
+    lcd.drawLine(0,0,0,HEIGHT-1,1);  // top
     _snake.draw(lcd);
     _food.draw(lcd);
     lcd.refresh();
