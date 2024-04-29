@@ -9,6 +9,12 @@ void snake::init() {
     body.push_back({22, 20}); // middle part
     body.push_back({24, 20}); // head
     direction = RIGHT; // initial direction
+#ifdef DEBUG
+    std::pair<int, int> head_init = get_head(); // Get the current head position
+    std::vector<int> _head_init = {head_init.first, head_init.second};
+    printf("Snake's head: Initialised at %d, %d\n", _head_init[0], _head_init[1]);
+#endif
+
 }
 
 void snake::set_direction(Direction new_direction) {
@@ -69,10 +75,14 @@ void snake::move(food &f,Joystick &joystick) {
 bool snake::check_collision() {
     std::pair<int, int> head_pair = get_head(); // Get the current head position
     std::vector<int> head = {head_pair.first, head_pair.second};
-
+    printf("\n");
     // Check if the head has collided with the body
     for (int i = 0; i < body.size() - 1; i++) {
+#ifdef DEBUG
+        printf("check body positin:%d, %d\n", body[i][0], body[i][1]);
+#endif
         if (body[i] == head) {
+            printf("collisin interupt, body position:%d, %d\n", body[i][0], body[i][1]);
             printf("Snake: Collision with body\n");
             return true;
         }

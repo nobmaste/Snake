@@ -111,5 +111,7 @@ void game_over() { // splash screen
         lcd.clear();
         lcd.refresh();
         ThisThread::sleep_for(250ms);
+        printf("\n");
+        printf("Game Over\n");
     }
 }
