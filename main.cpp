@@ -56,11 +56,11 @@ int main() {
         printf("lives\n");
        _snake.move(_food,joystick);  
         if(_snake.check_collision() || _snake.check_wall_collision(WIDTH, HEIGHT)) {
-                printf("collision\n");
                 lives=false;
         }
         render();                     // draw frame on screen
         thread_sleep_for(1000/fps);         // and wait for one frame period - ms
+        printf("*******************Next Loop*******************");
     }   
     game_over();
 }

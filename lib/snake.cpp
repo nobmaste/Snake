@@ -3,7 +3,7 @@
 snake::snake(){}
 
 void snake::init() {
-    printf("Snake: Init\n");
+    printf("Snake:: Init\n");
     body.clear();
     body.push_back({20, 20}); // tail
     body.push_back({22, 20}); // middle part
@@ -11,7 +11,8 @@ void snake::init() {
 #ifdef DEBUG
     std::pair<int, int> head_init = get_head(); // Get the current head position
     std::vector<int> _head_init = {head_init.first, head_init.second};
-    printf("Snake init\n Head: Initialised at %d, %d\n", _head_init[0], _head_init[1]);
+    printf("Head: Initialised at %d, %d\n", _head_init[0], _head_init[1]);
+    printf("\n");
 #endif
 
 }
@@ -27,6 +28,7 @@ void snake::set_direction(Direction new_direction) {
 检查是否吃下食物，吃下则生成一个新的食物并且蛇长+1
 */
 void snake::move(food &f,Joystick &joystick) {
+    printf("\nSnake:: Move\n");
     //获取蛇头位置
     std::pair<int, int> head = get_head();
     //获取摇杆方向
@@ -79,7 +81,7 @@ void snake::move(food &f,Joystick &joystick) {
 
 //检测自身碰撞
 bool snake::check_collision() {
-    printf("\n");
+    printf("\nsnake::check_collision\n");
     std::pair<int, int> head_pair = get_head(); // Get the current head position
     std::vector<int> head = {head_pair.first, head_pair.second};
     // Check if the head has collided with the body

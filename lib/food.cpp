@@ -1,17 +1,16 @@
 #include "food.h"
-void initRand();
-int getRand(int min, int max);
 
  food::food(){}
 
 Position2D food::get_position() {
+    printf("Food: Get position at %d, %d\n", food_position.x, food_position.y);
         return food_position;
     }
 
 void food::generate() {
        food_position.x=getRand(2, 82);
        food_position.y=getRand(2, 46);
-       
+       printf("Food: Generated at %d, %d\n", food_position.x, food_position.y);
     }
     
 
@@ -20,11 +19,7 @@ void food::draw(N5110 &lcd) {
 }
 
 // 初始化随机数生成器
-void initRand() {
+void food::initRand() {
     srand(time(0));
 }
 
-// 生成在[min, max]范围内的随机数
-int getRand(int min, int max) {
-    return min + rand() % (max - min + 1);
-}
