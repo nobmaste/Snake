@@ -30,10 +30,12 @@ public:
           return std::make_pair(-1, -1);  // 返回一个默认值
         }
     }
+    unsigned char get_score() ;
 
 private:
     std::vector<std::vector<int>> body;//snake身体
     Direction direction;
     Direction last_direction = RIGHT; // 默认初始方向为右
+    unsigned char score = 0;
 };
 #endif

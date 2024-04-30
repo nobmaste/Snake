@@ -8,10 +8,10 @@ Position2D food::get_position() {
     }
 
 void food::generate() {
-       food_position.x=getRand(2, 82);
-       food_position.y=getRand(2, 46);
-       printf("Food: Generated at %d, %d\n", food_position.x, food_position.y);
-    }
+    food_position.x = getRand(1, 41) * 2;
+    food_position.y = getRand(1, 23) * 2;
+    printf("Food: Generated at %d, %d\n", food_position.x, food_position.y);
+}
     
 
 void food::draw(N5110 &lcd) {  
