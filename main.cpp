@@ -99,15 +99,22 @@ void welcome() { // splash screen
 }
 
 void game_over() { // splash screen 
+    char str[10];
+    unsigned char num = _snake.get_score();
+    sprintf(str, "%d", num);
+    // N5110::printString(str, x, y);
     while (1) {
         lcd.clear();
         lcd.printString("  Game Over ",0,2);  
         lcd.refresh();
         ThisThread::sleep_for(250ms);
         lcd.clear();
+        lcd.printString("  Score: ",0,2);
+        lcd.printString(str, 8, 2);
         lcd.refresh();
         ThisThread::sleep_for(250ms);
         printf("\n");
         printf("Game Over\n");
+        printf("Score: %d\n", num);
     }
 }

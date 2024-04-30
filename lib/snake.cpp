@@ -75,6 +75,7 @@ void snake::move(food &f,Joystick &joystick) {
     }else {
         // 如果吃到食物，重置isEaten为false
         f.isEaten = false;
+        score++;//得分+1
         printf("Snake: Ate food\n");
     }
 }
@@ -121,3 +122,6 @@ void snake::draw(N5110 &lcd) {
     }
 }
 
+unsigned char snake::get_score() {
+        return score;
+    }
