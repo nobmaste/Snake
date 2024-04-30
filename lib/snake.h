@@ -30,9 +30,7 @@ public:
           return std::make_pair(-1, -1);  // 返回一个默认值
         }
     }
-    unsigned char get_score() {
-        return score;
-    }
+    unsigned char get_score() ;
 
 private:
     std::vector<std::vector<int>> body;//snake身体
