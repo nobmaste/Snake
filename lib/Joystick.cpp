@@ -25,16 +25,16 @@ Direction Joystick::get_direction()
     // partition 360 into segments and check which segment the angle is in
     if (angle < 0.0f) {
         d = CENTRE;   // check for -1.0 angle
-    } else if (angle < 45f) {  // then keep going in 45 degree increments
-        d = UP;
-    }  else if (angle < 135f) {
-        d = RIGHT;
-    }  else if (angle < 225f) {
+    } else if (angle < 45.0f) {  // then keep going in 45 degree increments
         d = DOWN;
-    }  else if (angle < 315f) {
+    }  else if (angle < 135.0f) {
+        d = RIGHT;
+    }  else if (angle < 225.0f) {
+        d = UP;
+    }  else if (angle < 315.0f) {
         d = LEFT;
     } else {
-        d = UP;
+        d = DOWN;
     }
 
     return d;

@@ -3,20 +3,20 @@
     {
       "name": "windows-gcc-x64",
       "includePath": [
-        "${workspaceFolder}/**",
-        "${workspaceFolder}/lib",
-        "${workspaceFolder}/N5110"
+        "${workspaceFolder}",
+          "${workspaceFolder}/N5110",
+          "${workspaceFolder}/lib"
       ],
+      "compilerPath": "D:/App/MinGW64/mingw64\bin/gcc.exe",
       "browse": {
         "path": [
           "${workspaceFolder}",
-          "${workspaceFolder}/lib",
-          "${workspaceFolder}/N5110"
+          "${workspaceFolder}/N5110",
+          "${workspaceFolder}/lib"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""
       },
-      "compilerPath": "C:/mingw64/bin/gcc.exe",
       "cStandard": "${default}",
       "cppStandard": "${default}",
       "intelliSenseMode": "windows-gcc-x64",
